@@ -1,0 +1,21 @@
+[default]
+localhost ansible_python_interpreter=/usr/bin/python
+
+[master]
+{% for item in master.instances %}
+{{ item.public_ip }}
+{% endfor %}
+
+[workers]
+{% for item in ec2.instances %}
+{{ item.public_ip }}
+{% endfor %}
+
+[nodes:children]
+master
+workers
+
+[nodes:vars]
+ansible_ssh_user=rancher
+ansible_ssh_private_key_file=~/.ssh/id_rsa_{{ ssh_key }}
+ansible_python_interpreter="PATH=/home/core/bin:$PATH python"

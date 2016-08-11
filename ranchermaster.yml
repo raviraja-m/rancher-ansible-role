@@ -1,0 +1,6 @@
+---
+- hosts: master
+  become: yes
+  gather_facts: no
+  tasks:
+    - raw: docker run -d --restart=always -p 8080:8080 rancher/server

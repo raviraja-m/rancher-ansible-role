@@ -1,0 +1,57 @@
+# Create rancher security group
+
+  - name: Create rancher Security Group
+    ec2_group:
+     name: "{{ security_group_name }}" 
+     description: rancher security group
+     region: "{{ aws_region }}"
+     rules:
+       - proto: tcp
+         from_port: 22
+         to_port: 22
+         cidr_ip: 0.0.0.0/0
+       - proto: tcp
+         from_port: 8080
+         to_port: 8080
+         cidr_ip: 0.0.0.0/0
+       - proto: tcp
+         from_port: 8153
+         to_port: 8153
+         cidr_ip: 0.0.0.0/0
+       - proto: tcp
+         from_port: 8154
+         to_port: 8154
+         cidr_ip: 0.0.0.0/0
+       - proto: tcp
+         from_port: 50000
+         to_port: 50000
+         cidr_ip: 0.0.0.0/0
+       - proto: icmp
+         from_port: -1
+         to_port: -1
+         cidr_ip: 0.0.0.0/0
+       - proto: tcp
+         from_port: 9345
+         to_port: 9346
+         cidr_ip: 0.0.0.0/0
+       - proto: udp
+         from_port: 500
+         to_port: 500
+         group_name: "{{ security_group_name }}"
+       - proto: udp
+         from_port: 4500
+         to_port: 4500
+         group_name: "{{ security_group_name }}"
+     rules_egress:
+       - proto: tcp
+         from_port: 0
+         to_port: 65535
+         cidr_ip: 0.0.0.0/0
+       - proto: udp
+         from_port: 0
+         to_port: 65535
+         cidr_ip: 0.0.0.0/0
+       - proto: icmp
+         from_port: -1
+         to_port: -1
+         cidr_ip: 0.0.0.0/0

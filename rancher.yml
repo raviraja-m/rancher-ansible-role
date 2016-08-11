@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    ssh_key: test
+    aws_region: us-east-1
+    num_nodes: 6 
+    security_group_name: rancher
+    template: ami-1071ca07
+    instance_type: t2.micro
+
+  roles:
+    - common
+    - rancher
+
+

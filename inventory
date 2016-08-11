@@ -1,0 +1,22 @@
+[default]
+localhost ansible_python_interpreter=/usr/bin/python
+
+[master]
+54.197.20.108
+
+[workers]
+52.90.9.7
+54.174.137.181
+52.91.239.152
+54.173.93.185
+52.91.80.242
+54.167.24.19
+
+[nodes:children]
+master
+workers
+
+[nodes:vars]
+ansible_ssh_user=rancher
+ansible_ssh_private_key_file=~/.ssh/id_rsa_test
+ansible_python_interpreter="PATH=/home/core/bin:$PATH python"

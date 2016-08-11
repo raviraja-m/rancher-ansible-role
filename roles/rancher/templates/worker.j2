@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo docker run --rm -it --privileged -v /var/run/docker.sock:/var/run/docker.sock rancher/agent http://{{ master.instances[0].public_ip }}:8080
