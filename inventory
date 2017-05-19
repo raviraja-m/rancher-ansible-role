@@ -20,3 +20,4 @@ workers
 ansible_ssh_user=rancher
 ansible_ssh_private_key_file=~/.ssh/id_rsa_test
 ansible_python_interpreter="PATH=/home/core/bin:$PATH python"
+
